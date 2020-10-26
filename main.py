@@ -25,7 +25,8 @@ if not os.path.exists(soup.title.text):
 os.chdir(soup.title.text)
 
 for i in data:
-    hole=os.system('mkdir '+i['title']+' >/dev/null 2>&1')
+    if not os.path.exists(i['title']):
+        hole=os.mkdir(i['title'])
     os.chdir(i['title'])
     if os.path.exists('_Complete'):
         print(i['title'] + " is already downloaded")
